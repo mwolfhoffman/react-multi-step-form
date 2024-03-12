@@ -6,13 +6,25 @@
   margin-top: -2rem;
   background-color: #fff;
   border-radius: 15px;
+  height: 75vh;
 }
 
 .cardTitle {
+  margin-top: 25px;
   color: hsl(213, 96%, 18%);
 }
 
 .cardDescription {
   color: hsl(231, 11%, 63%);
   line-height: 1.5em;
+}
+
+.desktopSidebar {
+  background-image: url("../assets/images/bg-sidebar-desktop.svg");
+  margin-top: 25px;
+  height: 100%;
+  background-repeat: no-repeat;
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
 }
