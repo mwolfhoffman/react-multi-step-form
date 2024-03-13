@@ -17,6 +17,12 @@ export default function Step2({ updateFields }: Step2Props) {
         <p className={styles.formDescription}>
           You have the option of monthly or yearly billing.
         </p>
+
+        <ul>
+          <li>Arcade: $90/yr</li>
+          <li>Advanced: $120/yr</li>
+          <li>Prop: $150/yr</li>
+        </ul>
       </Card>
     </>
   );

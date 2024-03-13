@@ -1,3 +1,5 @@
+import Card from "../Card";
+
 type FormData = {
   billing: string;
 };
@@ -9,7 +11,12 @@ type Step4Props = FormData & {
 export default function Step4({ updateFields }: Step4Props) {
   return (
     <>
-      <h3>Finishing Up</h3>
+      <Card>
+        <h3>Finishing Up</h3>
+        <p>Double-check that everything looks OK before confirming.</p>
+
+        <p>TODO</p>
+      </Card>
     </>
   );
 }

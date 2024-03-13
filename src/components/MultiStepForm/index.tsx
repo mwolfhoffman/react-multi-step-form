@@ -5,6 +5,7 @@ import useMultiStepForm from "./useMultiStepForm";
 import styles from "./MultiStepForm.module.css";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
+import Card from "../Card";
 
 type FormData = {
   name: string;
