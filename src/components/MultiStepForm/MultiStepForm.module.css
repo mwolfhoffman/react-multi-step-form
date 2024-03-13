@@ -47,3 +47,8 @@ label {
   left: 15%;
   margin-top: 2rem;
 }
+
+.errorLabel {
+  color: red;
+  float: right;
+}

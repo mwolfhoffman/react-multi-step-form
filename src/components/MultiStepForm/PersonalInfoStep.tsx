@@ -1,3 +1,4 @@
+import { FormErrors } from ".";
 import styles from "./MultiStepForm.module.css";
 
 type UserFormData = {
@@ -8,6 +9,7 @@ type UserFormData = {
 
 type PersonalInfoStepProps = UserFormData & {
   updateFields: (fields: Partial<UserFormData>) => void;
+  formErrors: FormErrors;
 };
 
 export default function PersonalInfoStep({
@@ -15,6 +17,7 @@ export default function PersonalInfoStep({
   email,
   phone,
   updateFields,
+  formErrors,
 }: PersonalInfoStepProps) {
   return (
     <>
@@ -22,8 +25,10 @@ export default function PersonalInfoStep({
       <p className={styles.formDescription}>
         Please provide your name, email, address, and phone number.
       </p>
-
       <label htmlFor="step1-name">Name</label>
+      {formErrors["name"] && (
+        <span className={styles.errorLabel}>{formErrors["name"]}</span>
+      )}
       <input
         autoFocus
         id="step1-name"
@@ -33,18 +38,22 @@ export default function PersonalInfoStep({
         onChange={(e) => updateFields({ name: e.target.value })}
       />
       <br />
-
       <label htmlFor="step1-email">Email Address</label>
+      {formErrors["email"] && (
+        <span className={styles.errorLabel}>{formErrors["email"]}</span>
+      )}{" "}
       <input
         id="step1-email"
-        type="email"
+        type="text"
         name="email"
         value={email}
         onChange={(e) => updateFields({ email: e.target.value })}
       />
       <br />
-
       <label htmlFor="step1-phone">Phone Number</label>
+      {formErrors["phone"] && (
+        <span className={styles.errorLabel}>{formErrors["phone"]}</span>
+      )}
       <input
         type="tel"
         id="step1-phone"
