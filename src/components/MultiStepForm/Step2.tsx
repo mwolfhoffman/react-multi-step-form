@@ -5,10 +5,6 @@ import styles from "./MultiStepForm.module.css";
 export default function Step2() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const formData = new FormData();
-
-    console.log(formData);
-    console.log("submitting");
   };
 
   return (

@@ -17,5 +17,5 @@ body {
 }
 
 .button:hover {
-  background-color: aqua;
+  background-color: hsl(231, 11%, 63%);
 }

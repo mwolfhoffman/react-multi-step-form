@@ -1,14 +1,11 @@
-import { ChangeEvent, FormEvent, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useRef } from "react";
 import Card from "../Card";
 import styles from "./MultiStepForm.module.css";
+import useMultistepForm from "./useMultiStepForm";
 
 export default function Step1() {
   const formRef = useRef<HTMLFormElement>(null);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
+  const { currentStep, formData, setFormData, next } = useMultistepForm();
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -24,6 +21,8 @@ export default function Step1() {
     e.preventDefault();
     console.log("FormData:", formData);
     console.log("submitting");
+    next();
+    console.log(currentStep);
   };
 
   return (
