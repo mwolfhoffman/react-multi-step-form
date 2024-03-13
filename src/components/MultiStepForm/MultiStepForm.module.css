@@ -38,12 +38,12 @@ label {
 
 .bottomRight {
   position: absolute;
-  right: 3rem;
+  right: 15%;
   margin-top: 2rem;
 }
 
 .bottomLeft {
   position: absolute;
-  left: 3rem;
+  left: 15%;
   margin-top: 2rem;
 }
