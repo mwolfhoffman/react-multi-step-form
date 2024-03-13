@@ -1,10 +1,10 @@
 import { FormEvent, useEffect, useState } from "react";
-import Step1 from "./Step1";
-import Step2 from "./Step2";
+import PersonalInfoStep from "./PersonalInfoStep";
+import SelectPlanStep from "./SelectPlanStep";
 import useMultiStepForm from "./useMultiStepForm";
-import Step3 from "./Step3";
-import Step4 from "./Step4";
-import styles from "./MultiStepForm.module.css";
+import AddOnsStep from "./AddOnsStep";
+import FinishingUpStep from "./FinishingUpStep";
+
 type FormData = {
   name: string;
   email: string;
@@ -27,10 +27,10 @@ export default function MultiStepForm() {
   };
   const [data, setData] = useState<FormData>(INITIAL_DATA);
   const { steps, currentStepIndex, step, next } = useMultiStepForm([
-    <Step1 {...data} updateFields={updateFields} />,
-    <Step2 {...data} updateFields={updateFields} />,
-    <Step3 {...data} updateFields={updateFields} />,
-    <Step4 {...data} updateFields={updateFields} />,
+    <PersonalInfoStep {...data} updateFields={updateFields} />,
+    <SelectPlanStep {...data} updateFields={updateFields} />,
+    <AddOnsStep {...data} updateFields={updateFields} />,
+    <FinishingUpStep {...data} updateFields={updateFields} />,
   ]);
 
   useEffect(() => {

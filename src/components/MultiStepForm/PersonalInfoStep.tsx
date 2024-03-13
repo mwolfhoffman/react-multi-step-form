@@ -7,16 +7,16 @@ type UserFormData = {
   phone: string;
 };
 
-type Step1Props = UserFormData & {
+type PersonalInfoStepProps = UserFormData & {
   updateFields: (fields: Partial<UserFormData>) => void;
 };
 
-export default function Step1({
+export default function PersonalInfoStep({
   name,
   email,
   phone,
   updateFields,
-}: Step1Props) {
+}: PersonalInfoStepProps) {
   return (
     <FormStepWrapper>
       <h1 className={styles.formTitle}>Personal info</h1>

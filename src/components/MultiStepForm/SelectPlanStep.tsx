@@ -5,11 +5,11 @@ type FormData = {
   billing: string;
 };
 
-type Step2Props = FormData & {
+type SelectPlanStepProps = FormData & {
   updateFields: (fields: Partial<FormData>) => void;
 };
 
-export default function Step2({ updateFields }: Step2Props) {
+export default function SelectPlanStep({ updateFields }: SelectPlanStepProps) {
   return (
     <>
       <FormStepWrapper>

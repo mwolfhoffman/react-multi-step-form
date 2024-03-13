@@ -4,11 +4,13 @@ type FormData = {
   billing: string;
 };
 
-type Step4Props = FormData & {
+type FinishingUpStepProps = FormData & {
   updateFields: (fields: Partial<FormData>) => void;
 };
 
-export default function Step4({ updateFields }: Step4Props) {
+export default function FinishingUpStep({
+  updateFields,
+}: FinishingUpStepProps) {
   return (
     <>
       <FormStepWrapper>
