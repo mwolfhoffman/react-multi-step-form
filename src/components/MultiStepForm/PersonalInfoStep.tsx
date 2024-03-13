@@ -1,4 +1,3 @@
-import FormStepWrapper from "./FormStepWrapper";
 import styles from "./MultiStepForm.module.css";
 
 type UserFormData = {
@@ -18,7 +17,7 @@ export default function PersonalInfoStep({
   updateFields,
 }: PersonalInfoStepProps) {
   return (
-    <FormStepWrapper>
+    <>
       <h1 className={styles.formTitle}>Personal info</h1>
       <p className={styles.formDescription}>
         Please provide your name, email, address, and phone number.
@@ -54,6 +53,6 @@ export default function PersonalInfoStep({
         onChange={(e) => updateFields({ phone: e.target.value })}
       />
       <br />
-    </FormStepWrapper>
+    </>
   );
 }

@@ -1,17 +1,26 @@
 import { ReactNode } from "react";
-import FormActions from "./FormActions";
+import FormActions, { FormActionsProps } from "./FormActions";
 import Card from "../Card";
 
-type FormStepWrapperProps = {
+type FormStepWrapperProps = FormActionsProps & {
   children: ReactNode;
 };
 
-export default function FormStepWrapper({ children }: FormStepWrapperProps) {
+export default function FormStepWrapper({
+  children,
+  steps,
+  back,
+  currentStepIndex,
+}: FormStepWrapperProps) {
   return (
     <>
       <Card>
         {children}
-        <FormActions />
+        <FormActions
+          steps={steps}
+          back={back}
+          currentStepIndex={currentStepIndex}
+        />
       </Card>
     </>
   );

@@ -1,9 +1,17 @@
+import { FormEvent, ReactNode } from "react";
 import styles from "./MultiStepForm.module.css";
-import useMultistepForm from "./useMultiStepForm";
 
-export default function FormActions() {
-  const { steps, currentStepIndex, back } = useMultistepForm([]);
+export type FormActionsProps = {
+  steps: ReactNode[];
+  currentStepIndex: number;
+  back: (e: FormEvent) => void;
+};
 
+export default function FormActions({
+  steps,
+  currentStepIndex,
+  back,
+}: FormActionsProps) {
   return (
     <>
       {" "}

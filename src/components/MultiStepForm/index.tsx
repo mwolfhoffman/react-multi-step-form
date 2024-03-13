@@ -4,6 +4,7 @@ import SelectPlanStep from "./SelectPlanStep";
 import useMultiStepForm from "./useMultiStepForm";
 import AddOnsStep from "./AddOnsStep";
 import FinishingUpStep from "./FinishingUpStep";
+import FormStepWrapper from "./FormStepWrapper";
 
 type FormData = {
   name: string;
@@ -26,16 +27,12 @@ export default function MultiStepForm() {
     });
   };
   const [data, setData] = useState<FormData>(INITIAL_DATA);
-  const { steps, currentStepIndex, step, next } = useMultiStepForm([
+  const { steps, currentStepIndex, step, next, back } = useMultiStepForm([
     <PersonalInfoStep {...data} updateFields={updateFields} />,
     <SelectPlanStep {...data} updateFields={updateFields} />,
     <AddOnsStep {...data} updateFields={updateFields} />,
     <FinishingUpStep {...data} updateFields={updateFields} />,
   ]);
-
-  useEffect(() => {
-    console.log("curr step in index.tsx " + currentStepIndex);
-  }, [currentStepIndex]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -47,10 +44,16 @@ export default function MultiStepForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <p>
-        Step {currentStepIndex + 1}/{steps.length}
-      </p>
-      {step}
+      <FormStepWrapper
+        steps={steps}
+        back={back}
+        currentStepIndex={currentStepIndex}
+      >
+        <p>
+          Step {currentStepIndex + 1}/{steps.length}
+        </p>
+        {step}
+      </FormStepWrapper>
     </form>
   );
 }

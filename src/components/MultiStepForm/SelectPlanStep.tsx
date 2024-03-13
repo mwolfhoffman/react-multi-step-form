@@ -1,4 +1,3 @@
-import FormStepWrapper from "./FormStepWrapper";
 import styles from "./MultiStepForm.module.css";
 
 type FormData = {
@@ -12,18 +11,16 @@ type SelectPlanStepProps = FormData & {
 export default function SelectPlanStep({ updateFields }: SelectPlanStepProps) {
   return (
     <>
-      <FormStepWrapper>
-        <h1 className={styles.formTitle}>Select your plan</h1>
-        <p className={styles.formDescription}>
-          You have the option of monthly or yearly billing.
-        </p>
+      <h1 className={styles.formTitle}>Select your plan</h1>
+      <p className={styles.formDescription}>
+        You have the option of monthly or yearly billing.
+      </p>
 
-        <ul>
-          <li>Arcade: $90/yr</li>
-          <li>Advanced: $120/yr</li>
-          <li>Prop: $150/yr</li>
-        </ul>
-      </FormStepWrapper>
+      <ul>
+        <li>Arcade: $90/yr</li>
+        <li>Advanced: $120/yr</li>
+        <li>Prop: $150/yr</li>
+      </ul>
     </>
   );
 }
