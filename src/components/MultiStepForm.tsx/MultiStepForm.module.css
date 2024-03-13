@@ -9,7 +9,7 @@
 /* Style input fields */
 .form input[type="text"],
 .form input[type="email"],
-.form input[type="phone"] {
+.form input[type="tel"] {
   display: inline-block;
   width: 100%;
   padding: 10px;
@@ -55,5 +55,11 @@ input[type="submit"]:hover {
 .bottomRight {
   position: absolute;
   right: 0;
+  margin-top: 15px;
+}
+
+.bottomRight {
+  position: absolute;
+  left: 0;
   margin-top: 15px;
 }
