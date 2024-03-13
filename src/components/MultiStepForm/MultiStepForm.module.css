@@ -1,15 +1,15 @@
 /* Apply basic styling to all form elements */
-.form {
-  width: 300px;
+.formContainer {
+  /* width: 300px; */
   margin: 10 auto;
   display: inline-block;
   position: relative;
 }
 
 /* Style input fields */
-.form input[type="text"],
-.form input[type="email"],
-.form input[type="tel"] {
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
   display: inline-block;
   width: 100%;
   padding: 10px;
@@ -20,7 +20,7 @@
 }
 
 /* Style labels */
-.form label {
+label {
   display: inline-block;
   margin-bottom: 5px;
   font-weight: bold;
@@ -42,7 +42,7 @@
   margin-top: 15px;
 }
 
-.bottomRight {
+.bottomLeft {
   position: absolute;
   left: 0;
   margin-top: 15px;

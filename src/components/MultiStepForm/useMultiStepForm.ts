@@ -1,33 +1,32 @@
-import { useState } from "react";
-import { BillingCadence } from "../../enums";
+import { ReactElement, useState } from "react";
 
-export default function useMultistepForm() {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    plan: "",
-    billingCadence: BillingCadence.MONTHLY,
-  });
+export default function useMultistepForm(steps: ReactElement[]) {
+  const [currentStepIndex, setCurrentStepIndex] = useState<number>(0);
 
-  const next = () => {
-    //  TODO: return if no next step
-    setCurrentStep((curr) => curr + 1);
-  };
+  function next() {
+    setCurrentStepIndex((i) => {
+      if (i >= steps.length - 1) return 1;
+      return i + 1;
+    });
+  }
 
-  const prev = () => {
-    if (currentStep === 0) {
-      return;
-    }
-    setCurrentStep((curr) => curr + 1);
-  };
+  function back() {
+    setCurrentStepIndex((i) => {
+      if (i <= 0) return i;
+      return i - 1;
+    });
+  }
+
+  function goTo(index: number) {
+    setCurrentStepIndex(index);
+  }
 
   return {
-    currentStep,
+    currentStepIndex,
+    step: steps[currentStepIndex],
+    goTo,
     next,
-    prev,
-    formData,
-    setFormData,
+    back,
+    steps,
   };
 }

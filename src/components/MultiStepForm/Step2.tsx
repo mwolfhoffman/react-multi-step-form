@@ -1,12 +1,15 @@
-import { FormEvent } from "react";
 import Card from "../Card";
 import styles from "./MultiStepForm.module.css";
 
-export default function Step2() {
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-  };
+type FormData = {
+  billing: string;
+};
 
+type Step2Props = FormData & {
+  updateFields: (fields: Partial<FormData>) => void;
+};
+
+export default function Step2({ updateFields }: Step2Props) {
   return (
     <>
       <Card>
@@ -14,11 +17,6 @@ export default function Step2() {
         <p className={styles.formDescription}>
           You have the option of monthly or yearly billing.
         </p>
-
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <button className={`button ${styles.bottomLeft}`}>Go Back</button>
-          <button className={`button ${styles.bottomRight}`}>Next Step</button>
-        </form>
       </Card>
     </>
   );
