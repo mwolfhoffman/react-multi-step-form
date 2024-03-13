@@ -1,4 +1,4 @@
-import Card from "../Card";
+import FormStepWrapper from "./FormStepWrapper";
 
 type FormData = {
   billing: string;
@@ -11,14 +11,14 @@ type Step3Props = FormData & {
 export default function Step3({ updateFields }: Step3Props) {
   return (
     <>
-      <Card>
+      <FormStepWrapper>
         <h3>Pick Addons</h3>
         <ul>
           <li>Online service</li>
           <li>Larget Storage</li>
           <li>Customizable Profile</li>
         </ul>
-      </Card>
+      </FormStepWrapper>
     </>
   );
 }

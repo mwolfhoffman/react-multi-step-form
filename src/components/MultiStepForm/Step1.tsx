@@ -1,4 +1,4 @@
-import Card from "../Card";
+import FormStepWrapper from "./FormStepWrapper";
 import styles from "./MultiStepForm.module.css";
 
 type UserFormData = {
@@ -18,7 +18,7 @@ export default function Step1({
   updateFields,
 }: Step1Props) {
   return (
-    <Card>
+    <FormStepWrapper>
       <h1 className={styles.formTitle}>Personal info</h1>
       <p className={styles.formDescription}>
         Please provide your name, email, address, and phone number.
@@ -27,7 +27,6 @@ export default function Step1({
       <label htmlFor="step1-name">Name</label>
       <input
         autoFocus
-        required
         id="step1-name"
         type="text"
         name="name"
@@ -38,7 +37,6 @@ export default function Step1({
 
       <label htmlFor="step1-email">Email Address</label>
       <input
-        required
         id="step1-email"
         type="email"
         name="email"
@@ -50,13 +48,12 @@ export default function Step1({
       <label htmlFor="step1-phone">Phone Number</label>
       <input
         type="tel"
-        required
         id="step1-phone"
         name="phone"
         value={phone}
         onChange={(e) => updateFields({ phone: e.target.value })}
       />
       <br />
-    </Card>
+    </FormStepWrapper>
   );
 }
