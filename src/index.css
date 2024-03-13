@@ -9,3 +9,13 @@ body {
   padding: 0;
   background-color: hsl(229, 24%, 87%);
 }
+
+.button {
+  color: hsl(231, 100%, 99%);
+  background-color: hsl(213, 96%, 18%);
+  padding: 10px;
+}
+
+.button:hover {
+  background-color: aqua;
+}

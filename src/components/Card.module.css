@@ -9,16 +9,6 @@
   height: 75vh;
 }
 
-.cardTitle {
-  margin-top: 25px;
-  color: hsl(213, 96%, 18%);
-}
-
-.cardDescription {
-  color: hsl(231, 11%, 63%);
-  line-height: 1.5em;
-}
-
 .desktopSidebar {
   background-image: url("../assets/images/bg-sidebar-desktop.svg");
   margin-top: 25px;

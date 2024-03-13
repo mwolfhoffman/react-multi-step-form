@@ -1,0 +1,59 @@
+/* Apply basic styling to all form elements */
+.form {
+  width: 300px;
+  margin: 10 auto;
+  display: inline-block;
+  position: relative;
+}
+
+/* Style input fields */
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="phone"] {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Style labels */
+.form label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Style submit button */
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Style submit button on hover */
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.formTitle {
+  margin-top: 25px;
+  color: hsl(213, 96%, 18%);
+}
+
+.formDescription {
+  color: hsl(231, 11%, 63%);
+  line-height: 1.5em;
+}
+
+.bottomRight {
+  position: absolute;
+  right: 0;
+  margin-top: 15px;
+}
