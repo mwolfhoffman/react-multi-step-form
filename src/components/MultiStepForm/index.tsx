@@ -70,7 +70,7 @@ export default function MultiStepForm() {
 
       console.log({ newFormErrors });
 
-      if (Object.values(newFormErrors)) {
+      if (Object.values(newFormErrors).find((x) => x)) {
         return;
       }
       return next(); // Proceed to the next step
