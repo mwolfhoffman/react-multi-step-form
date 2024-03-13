@@ -52,7 +52,6 @@ export default function MultiStepForm() {
         Step {currentStepIndex + 1}/{steps.length}
       </p>
       {step}
-
       {currentStepIndex !== 0 && (
         <button
           type="button"
@@ -62,15 +61,9 @@ export default function MultiStepForm() {
           Go Back
         </button>
       )}
-      {currentStepIndex === steps.length - 1 ? (
-        <button type="button" className={`button ${styles.bottomRight}`}>
-          Submit
-        </button>
-      ) : (
-        <button type="submit" className={`button ${styles.bottomRight}`}>
-          Next Step
-        </button>
-      )}
+      <button type="submit" className={`button ${styles.bottomRight}`}>
+        {currentStepIndex === steps.length - 1 ? "Confirm" : "Next"}
+      </button>
     </form>
   );
 }
