@@ -52,3 +52,21 @@ label {
   color: red;
   float: right;
 }
+
+.planOptionWrapper {
+  border: hsl(231, 11%, 63%) 1px solid;
+  padding: 0.5em;
+  margin: 10px;
+  border-radius: 15px;
+}
+
+.planNameHeader {
+  margin-top: -0.2em;
+  text-align: center;
+}
+
+.planOptionPricing {
+  color: hsl(231, 11%, 63%);
+  text-align: center;
+  margin-top: -1em;
+}
