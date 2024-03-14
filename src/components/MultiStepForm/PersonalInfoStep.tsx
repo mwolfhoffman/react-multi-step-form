@@ -1,4 +1,4 @@
-import { FormErrors } from ".";
+import { ErrorFieldNames, FormErrors } from ".";
 import styles from "./MultiStepForm.module.css";
 
 type UserFormData = {
@@ -10,6 +10,7 @@ type UserFormData = {
 type PersonalInfoStepProps = UserFormData & {
   updateFields: (fields: Partial<UserFormData>) => void;
   formErrors: FormErrors;
+  clearErrorField: (field: ErrorFieldNames) => void;
 };
 
 export default function PersonalInfoStep({
@@ -18,6 +19,7 @@ export default function PersonalInfoStep({
   phone,
   updateFields,
   formErrors,
+  clearErrorField,
 }: PersonalInfoStepProps) {
   return (
     <>
@@ -36,6 +38,7 @@ export default function PersonalInfoStep({
         name="name"
         value={name}
         onChange={(e) => updateFields({ name: e.target.value })}
+        onFocus={(e) => clearErrorField(e.target.name as ErrorFieldNames)}
       />
       <br />
       <label htmlFor="step1-email">Email Address</label>
@@ -48,6 +51,7 @@ export default function PersonalInfoStep({
         name="email"
         value={email}
         onChange={(e) => updateFields({ email: e.target.value })}
+        onFocus={(e) => clearErrorField(e.target.name as ErrorFieldNames)}
       />
       <br />
       <label htmlFor="step1-phone">Phone Number</label>
@@ -60,6 +64,7 @@ export default function PersonalInfoStep({
         name="phone"
         value={phone}
         onChange={(e) => updateFields({ phone: e.target.value })}
+        onFocus={(e) => clearErrorField(e.target.name as ErrorFieldNames)}
       />
       <br />
     </>

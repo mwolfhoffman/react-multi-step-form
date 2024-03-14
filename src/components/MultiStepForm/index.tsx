@@ -26,6 +26,8 @@ export type FormErrors = {
   phone: string;
 };
 
+export type ErrorFieldNames = "name" | "email" | "phone";
+
 export default function MultiStepForm() {
   const updateFields = (fields: Partial<FormData>) => {
     setData((curr) => {
@@ -39,11 +41,18 @@ export default function MultiStepForm() {
     phone: "",
   });
 
+  const clearErrorField = (field: ErrorFieldNames): void => {
+    const newErrors: FormErrors = { ...formErrors };
+    newErrors[field] = "";
+    setFormErrors(newErrors);
+  };
+
   const { steps, currentStepIndex, step, next, back } = useMultiStepForm([
     <PersonalInfoStep
       {...data}
       updateFields={updateFields}
       formErrors={formErrors}
+      clearErrorField={clearErrorField}
     />,
     <SelectPlanStep {...data} updateFields={updateFields} />,
     <AddOnsStep {...data} updateFields={updateFields} />,
@@ -84,6 +93,7 @@ export default function MultiStepForm() {
         steps={steps}
         back={back}
         currentStepIndex={currentStepIndex}
+        formErrors={formErrors}
       >
         <p>
           Step {currentStepIndex + 1}/{steps.length}

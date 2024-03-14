@@ -1,9 +1,11 @@
 import { ReactNode } from "react";
 import FormActions, { FormActionsProps } from "./FormActions";
 import Card from "../Card";
+import { FormErrors } from ".";
 
 type FormStepWrapperProps = FormActionsProps & {
   children: ReactNode;
+  formErrors: FormErrors;
 };
 
 export default function FormStepWrapper({
@@ -11,6 +13,7 @@ export default function FormStepWrapper({
   steps,
   back,
   currentStepIndex,
+  formErrors,
 }: FormStepWrapperProps) {
   return (
     <>
@@ -20,6 +23,7 @@ export default function FormStepWrapper({
           steps={steps}
           back={back}
           currentStepIndex={currentStepIndex}
+          formErrors={formErrors}
         />
       </Card>
     </>

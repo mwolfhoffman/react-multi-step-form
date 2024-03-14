@@ -1,16 +1,19 @@
 import { FormEvent, ReactNode } from "react";
 import styles from "./MultiStepForm.module.css";
+import { FormErrors } from ".";
 
 export type FormActionsProps = {
   steps: ReactNode[];
   currentStepIndex: number;
   back: (e: FormEvent) => void;
+  formErrors: FormErrors;
 };
 
 export default function FormActions({
   steps,
   currentStepIndex,
   back,
+  formErrors,
 }: FormActionsProps) {
   return (
     <>
@@ -24,7 +27,11 @@ export default function FormActions({
           Go Back
         </button>
       )}
-      <button type="submit" className={`button ${styles.bottomRight}`}>
+      <button
+        type="submit"
+        className={`button ${styles.bottomRight}`}
+        disabled={!!Object.values(formErrors).find((x) => x)}
+      >
         {currentStepIndex === steps.length - 1 ? "Confirm" : "Next"}
       </button>
     </>
