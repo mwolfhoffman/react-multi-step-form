@@ -1,6 +1,6 @@
 import "./App.css";
-import SideBar from "./components/SideBar";
-import MultiStepForm from "./components/MultiStepForm";
+import SideBar from "./features/SideBar";
+import MultiStepForm from "./features/MultiStepForm/components";
 
 function App() {
   return (

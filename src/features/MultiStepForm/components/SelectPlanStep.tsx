@@ -1,10 +1,6 @@
 import { MouseEventHandler, useState } from "react";
 import styles from "./MultiStepForm.module.css";
 
-type FormData = {
-  billing: string;
-};
-
 type PlanOption = {
   icon: string;
   name: string;
@@ -33,23 +29,19 @@ const planOptions: PlanOption[] = [
   },
 ];
 
-type SelectPlanStepProps = FormData & {
-  updateFields: (fields: Partial<FormData>) => void;
-};
-
-export default function SelectPlanStep({ updateFields }: SelectPlanStepProps) {
+export default function SelectPlanStep() {
   const [isMonthly, setIsMonthly] = useState<boolean>(true);
-  const [selectedPlan, setSelectedPlan] = useState<string>("");
+  // const [selectedPlan, setSelectedPlan] = useState<string>("");
 
   const handleToggle = () => {
     setIsMonthly(!isMonthly);
   };
 
-  const handleSelection = (e: MouseEvent, plan: PlanOption): void => {
-    const planSelection = `${plan.name}-${isMonthly ? "monthly" : "yearly"}`;
-    setSelectedPlan(planSelection);
-    console.log(planSelection);
-  };
+  // const handleSelection = (e: MouseEvent, plan: PlanOption): void => {
+  //   const planSelection = `${plan.name}-${isMonthly ? "monthly" : "yearly"}`;
+  //   setSelectedPlan(planSelection);
+  //   console.log(planSelection);
+  // };
 
   return (
     <>
@@ -57,7 +49,7 @@ export default function SelectPlanStep({ updateFields }: SelectPlanStepProps) {
       <p className={styles.formDescription}>
         You have the option of monthly or yearly billing.
       </p>
-      {planOptions.map((plan) => (
+      {/* {planOptions.map((plan) => (
         <div
           key={plan.name}
           className={styles.planOptionWrapper}
@@ -73,7 +65,7 @@ export default function SelectPlanStep({ updateFields }: SelectPlanStepProps) {
             )}
           </div>
         </div>
-      ))}
+      ))} */}
       <div style={{ marginTop: "1.25em", textAlign: "center" }}>
         Monthly
         <label className="switch" onChange={handleToggle}>
