@@ -39,10 +39,10 @@ export default function MultiStepForm() {
           !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
             formState.email.trim()
           )
-            ? "Email is required"
+            ? "Valid email is required"
             : "",
         phone: formState.phone.trim() === "" ? "Phone is required" : "",
-        billing: "",
+        billingPlan: "",
       };
       setFormErrors(newFormErrors);
       console.log({ newFormErrors });
