@@ -1,5 +1,6 @@
-import { MouseEventHandler, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./MultiStepForm.module.css";
+import { useFormStateContext } from "../context/FormStateContext";
 
 type PlanOption = {
   icon: string;
@@ -31,17 +32,27 @@ const planOptions: PlanOption[] = [
 
 export default function SelectPlanStep() {
   const [isMonthly, setIsMonthly] = useState<boolean>(true);
-  // const [selectedPlan, setSelectedPlan] = useState<string>("");
+  const [selectedPlan, setSelectedPlan] = useState<string>("");
+  const { setFormState, formState } = useFormStateContext();
 
   const handleToggle = () => {
     setIsMonthly(!isMonthly);
   };
 
-  // const handleSelection = (e: MouseEvent, plan: PlanOption): void => {
-  //   const planSelection = `${plan.name}-${isMonthly ? "monthly" : "yearly"}`;
-  //   setSelectedPlan(planSelection);
-  //   console.log(planSelection);
-  // };
+  const handleSelection = (e: MouseEvent, plan: PlanOption): void => {
+    setSelectedPlan(plan.name);
+  };
+
+  useEffect(() => {
+    setFormState((curr) => ({
+      ...curr,
+      billingPlan: `${selectedPlan}-${isMonthly ? "monthly" : "yearly"}`,
+    }));
+  }, [selectedPlan, isMonthly]);
+
+  useEffect(() => {
+    console.log(formState);
+  }, [formState]);
 
   return (
     <>
@@ -49,10 +60,12 @@ export default function SelectPlanStep() {
       <p className={styles.formDescription}>
         You have the option of monthly or yearly billing.
       </p>
-      {/* {planOptions.map((plan) => (
+      {planOptions.map((plan) => (
         <div
           key={plan.name}
-          className={styles.planOptionWrapper}
+          className={`${styles.planOptionWrapper} ${
+            plan.name === selectedPlan ? styles.activePlan : ""
+          }`}
           onClick={(e: MouseEvent) => handleSelection(e, plan)}
         >
           <img src={plan.icon} alt="" style={{ float: "left" }} />
@@ -65,7 +78,7 @@ export default function SelectPlanStep() {
             )}
           </div>
         </div>
-      ))} */}
+      ))}
       <div style={{ marginTop: "1.25em", textAlign: "center" }}>
         Monthly
         <label className="switch" onChange={handleToggle}>

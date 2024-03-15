@@ -70,3 +70,7 @@ label {
   text-align: center;
   margin-top: -1em;
 }
+
+.activePlan {
+  background-color: red;
+}

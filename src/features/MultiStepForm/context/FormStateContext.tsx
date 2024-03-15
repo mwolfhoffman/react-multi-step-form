@@ -1,4 +1,4 @@
-import React, {
+import {
   Dispatch,
   ReactElement,
   ReactNode,
@@ -8,7 +8,7 @@ import React, {
   useState,
 } from "react";
 
-type FormFields = "name" | "email" | "phone" | "billing";
+type FormFields = "name" | "email" | "phone" | "billingPlan";
 
 type FormData = {
   [Key in FormFields]: string;
@@ -18,7 +18,7 @@ export type FormErrors = {
   name: string;
   email: string;
   phone: string;
-  billing: string;
+  billingPlan: string;
 };
 
 interface FormStateContextType {
@@ -60,14 +60,14 @@ export const FormStateContextProvider = ({
     name: "",
     email: "",
     phone: "",
-    billing: "",
+    billingPlan: "",
   });
 
   const [formErrors, setFormErrors] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
-    billing: "",
+    billingPlan: "",
   });
 
   const [currentStepIndex, setCurrentStepIndex] = useState<number>(0);
