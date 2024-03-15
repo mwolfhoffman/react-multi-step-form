@@ -1,12 +1,12 @@
-import { FormEvent, ReactNode } from "react";
 import styles from "./MultiStepForm.module.css";
-import { FormErrors } from ".";
+import { useFormStateContext } from "../context/FormStateContext";
 
 export default function FormActions() {
+  const { formErrors, back, steps, currentStepIndex } = useFormStateContext();
+
   return (
     <>
-      {" "}
-      {/* {currentStepIndex !== 0 && (
+      {currentStepIndex !== 0 && (
         <button
           type="button"
           className={`button ${styles.bottomLeft}`}
@@ -21,7 +21,7 @@ export default function FormActions() {
         disabled={!!Object.values(formErrors).find((x) => x)}
       >
         {currentStepIndex === steps.length - 1 ? "Confirm" : "Next"}
-      </button> */}
+      </button>
     </>
   );
 }

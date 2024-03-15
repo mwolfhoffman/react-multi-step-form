@@ -1,9 +1,8 @@
 import { ReactNode } from "react";
-import FormActions, { FormActionsProps } from "./FormActions";
+import FormActions from "./FormActions";
 import Card from "../../Card";
-import { FormErrors } from ".";
 
-type FormStepWrapperProps = FormActionsProps & {
+type FormStepWrapperProps = {
   children: ReactNode;
 };
 

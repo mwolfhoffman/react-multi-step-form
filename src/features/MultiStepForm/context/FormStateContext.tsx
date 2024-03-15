@@ -1,5 +1,6 @@
-import {
+import React, {
   Dispatch,
+  ReactElement,
   ReactNode,
   SetStateAction,
   createContext,
@@ -17,6 +18,7 @@ export type FormErrors = {
   name: string;
   email: string;
   phone: string;
+  billing: string;
 };
 
 interface FormStateContextType {
@@ -24,6 +26,13 @@ interface FormStateContextType {
   setFormState: Dispatch<SetStateAction<FormData>>;
   formErrors: FormData;
   setFormErrors: Dispatch<SetStateAction<FormData>>;
+  currentStepIndex: number;
+  setCurrentStepIndex: Dispatch<SetStateAction<number>>;
+  back: () => void;
+  next: () => void;
+  steps: ReactElement[];
+  setSteps: Dispatch<SetStateAction<ReactElement[]>>;
+  step: ReactElement;
 }
 
 const FormStateContext = createContext<FormStateContextType | undefined>(
@@ -61,10 +70,39 @@ export const FormStateContextProvider = ({
     billing: "",
   });
 
+  const [currentStepIndex, setCurrentStepIndex] = useState<number>(0);
+  const [steps, setSteps] = useState<ReactElement[]>([]);
+
+  function next() {
+    setCurrentStepIndex((i) => {
+      if (i >= steps.length - 1) return 1;
+      return i + 1;
+    });
+  }
+
+  function back() {
+    setCurrentStepIndex((i) => {
+      if (i <= 0) return i;
+      return i - 1;
+    });
+  }
+
   return (
     <>
       <FormStateContext.Provider
-        value={{ formState, formErrors, setFormState, setFormErrors }}
+        value={{
+          formState,
+          formErrors,
+          setFormState,
+          setFormErrors,
+          currentStepIndex,
+          setCurrentStepIndex,
+          next,
+          back,
+          steps,
+          setSteps,
+          step: steps[currentStepIndex],
+        }}
       >
         {children}
       </FormStateContext.Provider>
