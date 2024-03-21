@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./MultiStepForm.module.css";
 
 interface AddOnOption {
@@ -9,6 +10,8 @@ interface AddOnOption {
 }
 
 export default function AddOnsStep() {
+  const [selectedAddOnNames, setSelectedAddOnNames] = useState<string[]>([]);
+
   const addOnOptions: AddOnOption[] = [
     {
       name: "Online service",
@@ -33,13 +36,36 @@ export default function AddOnsStep() {
     },
   ];
 
+  const handleSelection = (name: string) => {
+    let newSelectedNames = [];
+    if (selectedAddOnNames.includes(name)) {
+      newSelectedNames = selectedAddOnNames.filter((x) => x !== name);
+    } else {
+      newSelectedNames = [...selectedAddOnNames, name];
+    }
+    setSelectedAddOnNames(newSelectedNames);
+  };
+
   return (
     <>
       <h3>Pick Addons</h3>
       {addOnOptions.map((option) => (
-        <>
-          <h1>{option.name}</h1>
-        </>
+        <div
+          key={option.name}
+          className={`${styles.addOnContainer} ${
+            selectedAddOnNames.includes(option.name)
+              ? styles.selectedAddOn
+              : null
+          }`}
+          onClick={() => handleSelection(option.name)}
+        >
+          <h4>{option.name}</h4>
+          <p>{option.description}</p>
+          <span>
+            {" "}
+            ${option.monthlyCost}/mo or ${option.yearlyCost}/yr
+          </span>
+        </div>
       ))}
     </>
   );
