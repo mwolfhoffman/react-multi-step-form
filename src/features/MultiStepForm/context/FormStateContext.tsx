@@ -22,7 +22,7 @@ type FormData = {
   billingPlan: string;
   billingCycle: "mo" | "yr",
   planCost: number,
-  addOns: string[]
+  addOns: AddOnOption[]
 };
 
 export type FormErrors = {

@@ -11,9 +11,11 @@ interface AddOnOption {
 }
 
 export default function AddOnsStep() {
-  const [selectedAddOnNames, setSelectedAddOnNames] = useState<string[]>([]);
-  const { setFormState } =
-    useFormStateContext();
+  const { formState, setFormState } = useFormStateContext();
+
+  const getCostFromBillingCycle = (option: AddOnOption) => {
+    return formState.billingCycle === 'mo' ? option.monthlyCost : option.yearlyCost
+  }
 
 
   const addOnOptions: AddOnOption[] = [
@@ -40,14 +42,16 @@ export default function AddOnsStep() {
     },
   ];
 
-  const handleSelection = (name: string) => {
-    let newSelectedNames = [];
-    if (selectedAddOnNames.includes(name)) {
-      newSelectedNames = selectedAddOnNames.filter((x) => x !== name);
+  const handleSelection = (option: AddOnOption) => {
+    let newSelectedOptions = [];
+    if (formState.addOns.find( x=> x.name === option.name)) {
+      newSelectedOptions = formState.addOns.filter((x) => x.name !== option.name);
     } else {
-      newSelectedNames = [...selectedAddOnNames, name];
+      //  TODO: get mo/yr cost
+      newSelectedOptions = [...formState.addOns, {name: option.name, cost: getCostFromBillingCycle(option)}];
     }
-    setSelectedAddOnNames(newSelectedNames);
+    setFormState( curr => ({ ...curr, addOns: newSelectedOptions }));
+
   };
 
   return (
@@ -57,11 +61,11 @@ export default function AddOnsStep() {
         <div
           key={option.name}
           className={`${styles.addOnContainer} ${
-            selectedAddOnNames.includes(option.name)
+            formState.addOns.find(x => x.name === option.name)
               ? styles.selectedAddOn
               : null
           }`}
-          onClick={() => handleSelection(option.name)}
+          onClick={() => handleSelection(option)}
         >
           <h4>{option.name}</h4>
           <p>{option.description}</p>
