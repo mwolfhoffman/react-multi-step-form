@@ -54,9 +54,6 @@ export default function MultiStepForm() {
   return (
     <form onSubmit={handleSubmit}>
       <FormStepWrapper>
-        <p>
-          Step {currentStepIndex + 1}/{steps.length}
-        </p>
         {step}
       </FormStepWrapper>
     </form>
