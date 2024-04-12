@@ -31,24 +31,20 @@ const planOptions: PlanOption[] = [
 ];
 
 export default function SelectPlanStep() {
-  const [isMonthly, setIsMonthly] = useState<boolean>(true);
-  const [selectedPlan, setSelectedPlan] = useState<string>("");
   const { setFormState, formState } = useFormStateContext();
 
   const handleToggle = () => {
-    setIsMonthly(!isMonthly);
+    setFormState( curr => ({
+      ...curr,
+      billingCycle: curr.billingCycle === 'mo' ? 'yr' :'mo'
+    }));
   };
 
   const handleSelection = (e: MouseEvent, plan: PlanOption): void => {
-    setSelectedPlan(plan.name);
+    setFormState( curr => ({
+      ...curr, 
+      billingPlan: plan.name}));
   };
-
-  useEffect(() => {
-    setFormState((curr) => ({
-      ...curr,
-      billingPlan: `${selectedPlan}-${isMonthly ? "monthly" : "yearly"}`,
-    }));
-  }, [selectedPlan, isMonthly]);
 
   useEffect(() => {
     console.log(formState);
@@ -64,14 +60,14 @@ export default function SelectPlanStep() {
         <div
           key={plan.name}
           className={`${styles.planOptionWrapper} ${
-            plan.name === selectedPlan ? styles.activePlan : ""
+            plan.name === formState.billingPlan ? styles.activePlan : ""
           }`}
           onClick={(e: MouseEvent) => handleSelection(e, plan)}
         >
           <img src={plan.icon} alt="" style={{ float: "left" }} />
           <h3 className={styles.planNameHeader}>{plan.name}</h3>
           <div className={styles.planOptionPricing}>
-            {isMonthly ? (
+            {formState.billingCycle === 'mo' ? (
               <span>{plan.monthly}/mo</span>
             ) : (
               <span>{plan.yearly}/yr</span>

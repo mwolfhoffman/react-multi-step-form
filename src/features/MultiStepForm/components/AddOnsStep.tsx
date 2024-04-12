@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./MultiStepForm.module.css";
+import { useFormStateContext } from "../context/FormStateContext";
 
 interface AddOnOption {
   name: string;
@@ -11,6 +12,9 @@ interface AddOnOption {
 
 export default function AddOnsStep() {
   const [selectedAddOnNames, setSelectedAddOnNames] = useState<string[]>([]);
+  const { setFormState } =
+    useFormStateContext();
+
 
   const addOnOptions: AddOnOption[] = [
     {

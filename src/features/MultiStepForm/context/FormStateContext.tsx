@@ -10,8 +10,19 @@ import {
 
 type FormFields = "name" | "email" | "phone" | "billingPlan";
 
+type AddOnOption = {
+  name: string
+  cost: number 
+}
+
 type FormData = {
-  [Key in FormFields]: string;
+  name: string;
+  email: string;
+  phone: string;
+  billingPlan: string;
+  billingCycle: "mo" | "yr",
+  planCost: number,
+  addOns: string[]
 };
 
 export type FormErrors = {
@@ -24,8 +35,8 @@ export type FormErrors = {
 interface FormStateContextType {
   formState: FormData;
   setFormState: Dispatch<SetStateAction<FormData>>;
-  formErrors: FormData;
-  setFormErrors: Dispatch<SetStateAction<FormData>>;
+  formErrors: FormErrors;
+  setFormErrors: Dispatch<SetStateAction<FormErrors>>;
   currentStepIndex: number;
   setCurrentStepIndex: Dispatch<SetStateAction<number>>;
   back: () => void;
@@ -60,10 +71,13 @@ export const FormStateContextProvider = ({
     name: "",
     email: "",
     phone: "",
-    billingPlan: "",
+    billingPlan: "Arcade",
+    billingCycle: "mo",
+    planCost: 0,
+    addOns: []
   });
 
-  const [formErrors, setFormErrors] = useState<FormData>({
+  const [formErrors, setFormErrors] = useState<FormErrors>({
     name: "",
     email: "",
     phone: "",
