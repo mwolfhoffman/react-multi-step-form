@@ -1,4 +1,4 @@
-import MultiStepForm from "../../MultiStepForm"
+import MultiStepForm from "../../MultiStepForm/components"
 
 function MobileLayout(){
     //  TODO: show current step 

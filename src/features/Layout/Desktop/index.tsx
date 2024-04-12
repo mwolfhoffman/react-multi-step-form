@@ -1,4 +1,4 @@
-import MultiStepForm from "../MultiStepForm"
+import MultiStepForm from "../../MultiStepForm/components"
 
 function DesktopLayout(){
     return (  
