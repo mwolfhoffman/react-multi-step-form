@@ -6,8 +6,6 @@ type CardProps = {
 };
 
 export default function Card({ children }: CardProps) {
-  // const isMobile = useMediaQuery("(max-width: 600px)");
-
   return (
     <>
       <div className={styles.cardContainer}>{children}</div>

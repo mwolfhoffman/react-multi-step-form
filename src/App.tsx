@@ -1,12 +1,14 @@
 import "./App.css";
-import SideBar from "./components/SideBar";
-import MultiStepForm from "./components/MultiStepForm";
+import useScreenWidth from "./hooks/useGetScreenWidth";
+import MobileLayout from "./components/Layout/Mobile";
+import DesktopLayout from "./components/Layout/Desktop";
 
 function App() {
+  const screenWidth = useScreenWidth()
+
   return (
     <>
-      <SideBar />
-      <MultiStepForm />
+      {screenWidth <768 ? <MobileLayout/> : <DesktopLayout/>}
     </>
   );
 }
