@@ -1,0 +1,17 @@
+.headerContainer {
+  height: 200px;
+  margin: 0;
+  background: url("../assets/images/bg-sidebar-mobile.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .headerContainer {
+    /* height: 100vh;
+    background: url("../assets/images/bg-sidebar-desktop.svg");
+    /* transform: rotate(90deg); */
+    /* background-repeat: no-repeat; */
+    display: none;
+  }
+}

@@ -70,3 +70,18 @@ label {
   text-align: center;
   margin-top: -1em;
 }
+
+.activePlan {
+  background-color: red;
+}
+
+.addOnContainer {
+  border: hsl(231, 11%, 63%) 1px solid;
+  padding: 0.5em;
+  margin: 10px;
+  border-radius: 15px;
+}
+
+.selectedAddOn {
+  background-color: blue;
+}
