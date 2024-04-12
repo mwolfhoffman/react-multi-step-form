@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import styles from "./MultiStepForm.module.css";
 import { useFormStateContext } from "../context/FormStateContext";
 
@@ -34,21 +33,20 @@ export default function SelectPlanStep() {
   const { setFormState, formState } = useFormStateContext();
 
   const handleToggle = () => {
+    const currentPlanOption = planOptions.find(o => o.name === formState.billingPlan) ?? {monthly: 0, yearly:0}
     setFormState( curr => ({
       ...curr,
-      billingCycle: curr.billingCycle === 'mo' ? 'yr' :'mo'
+      billingCycle: curr.billingCycle === 'mo' ? 'yr' :'mo',
+      planCost: curr.billingCycle === 'mo' ? currentPlanOption.monthly : currentPlanOption.yearly
     }));
   };
 
   const handleSelection = (e: MouseEvent, plan: PlanOption): void => {
     setFormState( curr => ({
       ...curr, 
-      billingPlan: plan.name}));
+      billingPlan: plan.name,
+    planCost: formState.billingCycle === 'mo' ? plan.monthly : plan.yearly }));
   };
-
-  useEffect(() => {
-    console.log(formState);
-  }, [formState]);
 
   return (
     <>

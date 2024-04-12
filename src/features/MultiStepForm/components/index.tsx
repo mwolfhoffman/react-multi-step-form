@@ -28,10 +28,8 @@ export default function MultiStepForm() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("here");
     let newFormErrors: FormErrors;
     if (currentStepIndex !== steps.length - 1) {
-      console.log("handle submit called");
       newFormErrors = {
         name: formState.name.trim() === "" ? "Name is required" : "",
         email:
@@ -45,7 +43,6 @@ export default function MultiStepForm() {
         billingPlan: "",
       };
       setFormErrors(newFormErrors);
-      console.log({ newFormErrors });
       if (Object.values(newFormErrors).find((x) => x)) {
         return;
       }
