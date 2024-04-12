@@ -1,9 +1,5 @@
-import { MouseEventHandler, useState } from "react";
 import styles from "./MultiStepForm.module.css";
-
-type FormData = {
-  billing: string;
-};
+import { useFormStateContext } from "../context/FormStateContext";
 
 type PlanOption = {
   icon: string;
@@ -33,22 +29,23 @@ const planOptions: PlanOption[] = [
   },
 ];
 
-type SelectPlanStepProps = FormData & {
-  updateFields: (fields: Partial<FormData>) => void;
-};
-
-export default function SelectPlanStep({ updateFields }: SelectPlanStepProps) {
-  const [isMonthly, setIsMonthly] = useState<boolean>(true);
-  const [selectedPlan, setSelectedPlan] = useState<string>("");
+export default function SelectPlanStep() {
+  const { setFormState, formState } = useFormStateContext();
 
   const handleToggle = () => {
-    setIsMonthly(!isMonthly);
+    const currentPlanOption = planOptions.find(o => o.name === formState.billingPlan) ?? {monthly: 0, yearly:0}
+    setFormState( curr => ({
+      ...curr,
+      billingCycle: curr.billingCycle === 'mo' ? 'yr' :'mo',
+      planCost: curr.billingCycle === 'mo' ? currentPlanOption.monthly : currentPlanOption.yearly
+    }));
   };
 
   const handleSelection = (e: MouseEvent, plan: PlanOption): void => {
-    const planSelection = `${plan.name}-${isMonthly ? "monthly" : "yearly"}`;
-    setSelectedPlan(planSelection);
-    console.log(planSelection);
+    setFormState( curr => ({
+      ...curr, 
+      billingPlan: plan.name,
+    planCost: formState.billingCycle === 'mo' ? plan.monthly : plan.yearly }));
   };
 
   return (
@@ -60,13 +57,15 @@ export default function SelectPlanStep({ updateFields }: SelectPlanStepProps) {
       {planOptions.map((plan) => (
         <div
           key={plan.name}
-          className={styles.planOptionWrapper}
+          className={`${styles.planOptionWrapper} ${
+            plan.name === formState.billingPlan ? styles.activePlan : ""
+          }`}
           onClick={(e: MouseEvent) => handleSelection(e, plan)}
         >
           <img src={plan.icon} alt="" style={{ float: "left" }} />
           <h3 className={styles.planNameHeader}>{plan.name}</h3>
           <div className={styles.planOptionPricing}>
-            {isMonthly ? (
+            {formState.billingCycle === 'mo' ? (
               <span>{plan.monthly}/mo</span>
             ) : (
               <span>{plan.yearly}/yr</span>

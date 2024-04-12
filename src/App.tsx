@@ -1,12 +1,15 @@
 import "./App.css";
-import SideBar from "./components/SideBar";
-import MultiStepForm from "./components/MultiStepForm";
+import SideBar from "./features/SideBar";
+import MultiStepForm from "./features/MultiStepForm/components";
+import { FormStateContextProvider } from "./features/MultiStepForm/context/FormStateContext";
 
 function App() {
   return (
     <>
-      <SideBar />
-      <MultiStepForm />
+      <FormStateContextProvider>
+        <SideBar />
+        <MultiStepForm />
+      </FormStateContextProvider>
     </>
   );
 }

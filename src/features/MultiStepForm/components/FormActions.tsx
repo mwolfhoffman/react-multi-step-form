@@ -1,23 +1,11 @@
-import { FormEvent, ReactNode } from "react";
 import styles from "./MultiStepForm.module.css";
-import { FormErrors } from ".";
+import { useFormStateContext } from "../context/FormStateContext";
 
-export type FormActionsProps = {
-  steps: ReactNode[];
-  currentStepIndex: number;
-  back: (e: FormEvent) => void;
-  formErrors: FormErrors;
-};
+export default function FormActions() {
+  const { formErrors, back, steps, currentStepIndex } = useFormStateContext();
 
-export default function FormActions({
-  steps,
-  currentStepIndex,
-  back,
-  formErrors,
-}: FormActionsProps) {
   return (
     <>
-      {" "}
       {currentStepIndex !== 0 && (
         <button
           type="button"
