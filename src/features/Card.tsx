@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import styles from "./Card.module.css";
 
 type CardProps = {
   children: ReactNode;
@@ -8,7 +7,7 @@ type CardProps = {
 export default function Card({ children }: CardProps) {
   return (
     <>
-      <div className={styles.cardContainer}>{children}</div>
+      <div className=''>{children}</div>
     </>
   );
 }
