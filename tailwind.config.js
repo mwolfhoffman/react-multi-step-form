@@ -8,6 +8,7 @@ export default {
     extend: {
       backgroundImage: {
         'hero-mobile': "url('./assets/images/bg-sidebar-mobile.svg')",
+        'hero-desktop': "url('./assets/images/bg-sidebar-desktop.svg')",
       },
       colors: {
         marineBlue: 'hsl(213, 96%, 18%)',

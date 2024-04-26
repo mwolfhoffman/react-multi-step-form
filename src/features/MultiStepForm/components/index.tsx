@@ -19,10 +19,22 @@ export default function MultiStepForm() {
 
   useEffect(() => {
     setSteps([
-      <PersonalInfoStep />,
-      <SelectPlanStep />,
-      <AddOnsStep />,
-      <FinishingUpStep />,
+      {
+      component: <PersonalInfoStep />,
+      description: 'Your Info'
+      },
+      {
+        component: <SelectPlanStep />,
+        description: 'Your Plan'
+      },
+      {
+        component: <AddOnsStep />,
+        description: 'Add-Ons'
+      },
+      {
+        component: <FinishingUpStep />,
+        description: 'Summary'
+      }
     ]);
   }, []);
 
@@ -54,7 +66,7 @@ export default function MultiStepForm() {
   return (
     <form onSubmit={handleSubmit}>
       <FormStepWrapper>
-        {step}
+        {step?.component}
       </FormStepWrapper>
     </form>
   );

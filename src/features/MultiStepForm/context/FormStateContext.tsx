@@ -32,6 +32,12 @@ export type FormErrors = {
   billingPlan: string;
 };
 
+
+interface Step {
+  component: ReactElement,
+  description: string
+}
+
 interface FormStateContextType {
   formState: FormData;
   setFormState: Dispatch<SetStateAction<FormData>>;
@@ -41,9 +47,9 @@ interface FormStateContextType {
   setCurrentStepIndex: Dispatch<SetStateAction<number>>;
   back: () => void;
   next: () => void;
-  steps: ReactElement[];
-  setSteps: Dispatch<SetStateAction<ReactElement[]>>;
-  step: ReactElement;
+  steps: Step[];
+  setSteps: Dispatch<SetStateAction<Step[]>>;
+  step: Step;
 }
 
 const FormStateContext = createContext<FormStateContextType | undefined>(
@@ -85,7 +91,7 @@ export const FormStateContextProvider = ({
   });
 
   const [currentStepIndex, setCurrentStepIndex] = useState<number>(0);
-  const [steps, setSteps] = useState<ReactElement[]>([]);
+  const [steps, setSteps] = useState<Step[]>([]);
 
   function next() {
     setCurrentStepIndex((i) => {
