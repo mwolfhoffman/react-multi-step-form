@@ -1,7 +1,7 @@
-import styles from "./SideBar.module.css";
+import styles from './SideBar.module.css'
 
 function MobileSideBar() {
-  return <div className={styles.headerContainer}></div>;
+  return <div className={styles.headerContainer}></div>
 }
 
-export default MobileSideBar;
+export default MobileSideBar

@@ -1,8 +1,8 @@
-import styles from "./MultiStepForm.module.css";
-import { useFormStateContext } from "../context/FormStateContext";
+import styles from './MultiStepForm.module.css'
+import { useFormStateContext } from '../context/FormStateContext'
 
 export default function FormActions() {
-  const { formErrors, back, steps, currentStepIndex } = useFormStateContext();
+  const { formErrors, back, steps, currentStepIndex } = useFormStateContext()
 
   return (
     <>
@@ -20,8 +20,8 @@ export default function FormActions() {
         className={`button ${styles.bottomRight}`}
         disabled={!!Object.values(formErrors).find((x) => x)}
       >
-        {currentStepIndex === steps.length - 1 ? "Confirm" : "Next"}
+        {currentStepIndex === steps.length - 1 ? 'Confirm' : 'Next'}
       </button>
     </>
-  );
+  )
 }

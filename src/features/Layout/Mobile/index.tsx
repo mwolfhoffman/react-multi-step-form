@@ -1,16 +1,15 @@
-import MultiStepForm from "../../MultiStepForm/components";
-import StepTracker from "./StepTracker";
+import MultiStepForm from '../../MultiStepForm/components'
+import StepTracker from './StepTracker'
 
 function MobileLayout() {
-
   return (
     <div className="h-screen flex flex-col">
-     <StepTracker/>
+      <StepTracker />
       <div className="flex-grow bg-white px-6">
-          <MultiStepForm />
+        <MultiStepForm />
       </div>
     </div>
-  );
+  )
 }
 
-export default MobileLayout;
+export default MobileLayout

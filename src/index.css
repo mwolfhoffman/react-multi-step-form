@@ -20,9 +20,6 @@
   src: url('../assets/fonts/Ubuntu-Medium.ttf') format('truetype');
 }
 
-
-
-
 /* body {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -103,4 +100,4 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-} */ 
+} */

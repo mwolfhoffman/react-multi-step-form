@@ -1,20 +1,20 @@
-import { ChangeEvent } from "react";
-import { useFormStateContext } from "../context/FormStateContext";
-import styles from "./MultiStepForm.module.css";
+import { ChangeEvent } from 'react'
+import { useFormStateContext } from '../context/FormStateContext'
+import styles from './MultiStepForm.module.css'
 
 export default function PersonalInfoStep() {
   const { formState, formErrors, setFormState, setFormErrors } =
-    useFormStateContext();
+    useFormStateContext()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormState((curr) => ({ ...curr, [name]: value }));
-  };
+    const { name, value } = e.target
+    setFormState((curr) => ({ ...curr, [name]: value }))
+  }
 
   const handleFocus = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name } = e.target;
-    setFormErrors((curr) => ({ ...curr, [name]: "" }));
-  };
+    const { name } = e.target
+    setFormErrors((curr) => ({ ...curr, [name]: '' }))
+  }
 
   return (
     <>
@@ -39,7 +39,7 @@ export default function PersonalInfoStep() {
       <label htmlFor="step1-email">Email Address</label>
       {formErrors.email && (
         <span className={styles.errorLabel}>{formErrors.email}</span>
-      )}{" "}
+      )}{' '}
       <input
         id="step1-email"
         type="text"
@@ -63,5 +63,5 @@ export default function PersonalInfoStep() {
       />
       <br />
     </>
-  );
+  )
 }

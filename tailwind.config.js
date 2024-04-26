@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],  
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       backgroundImage: {
@@ -21,21 +18,20 @@ export default {
         lightGray: 'hsl(229, 24%, 87%)',
         magnolia: 'hsl(217, 100%, 97%)',
         alabaster: 'hsl(231, 100%, 99%)',
-        white: 'hsl(0, 0%, 100%)'
+        white: 'hsl(0, 0%, 100%)',
       },
       fontFamily: {
         body: ['Ubuntu', 'sans-serif'],
       },
       fontSize: {
-        'body': '16px',
+        body: '16px',
       },
       fontWeight: {
-        'normal': 400,
-        'medium': 500,
-        'bold': 700,
+        normal: 400,
+        medium: 500,
+        bold: 700,
       },
     },
   },
   plugins: [],
 }
-

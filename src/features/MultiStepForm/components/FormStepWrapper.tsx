@@ -1,10 +1,10 @@
-import { ReactNode } from "react";
-import FormActions from "./FormActions";
-import Card from "../../Card";
+import { ReactNode } from 'react'
+import FormActions from './FormActions'
+import Card from '../../Card'
 
 type FormStepWrapperProps = {
-  children: ReactNode;
-};
+  children: ReactNode
+}
 
 export default function FormStepWrapper({ children }: FormStepWrapperProps) {
   return (
@@ -14,5 +14,5 @@ export default function FormStepWrapper({ children }: FormStepWrapperProps) {
         <FormActions />
       </Card>
     </>
-  );
+  )
 }

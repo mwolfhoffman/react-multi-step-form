@@ -1,52 +1,58 @@
-import styles from "./MultiStepForm.module.css";
-import { useFormStateContext } from "../context/FormStateContext";
+import styles from './MultiStepForm.module.css'
+import { useFormStateContext } from '../context/FormStateContext'
 
 type PlanOption = {
-  icon: string;
-  name: string;
-  monthly: number;
-  yearly: number;
-};
+  icon: string
+  name: string
+  monthly: number
+  yearly: number
+}
 
 const planOptions: PlanOption[] = [
   {
-    icon: "../../../assets/images/icon-arcade.svg",
-    name: "Arcade",
+    icon: '../../../assets/images/icon-arcade.svg',
+    name: 'Arcade',
     monthly: 9,
     yearly: 90,
   },
   {
-    icon: "../../../assets/images/icon-advanced.svg",
-    name: "Advanced",
+    icon: '../../../assets/images/icon-advanced.svg',
+    name: 'Advanced',
     monthly: 12,
     yearly: 120,
   },
   {
-    icon: "../../../assets/images/icon-pro.svg",
-    name: "Pro",
+    icon: '../../../assets/images/icon-pro.svg',
+    name: 'Pro',
     monthly: 15,
     yearly: 150,
   },
-];
+]
 
 export default function SelectPlanStep() {
-  const { setFormState, formState } = useFormStateContext();
+  const { setFormState, formState } = useFormStateContext()
 
   const handleToggle = () => {
-    const currentPlanOption = planOptions.find(o => o.name === formState.billingPlan) ?? {monthly: 0, yearly:0}
-    setFormState( curr => ({
+    const currentPlanOption = planOptions.find(
+      (o) => o.name === formState.billingPlan,
+    ) ?? { monthly: 0, yearly: 0 }
+    setFormState((curr) => ({
       ...curr,
-      billingCycle: curr.billingCycle === 'mo' ? 'yr' :'mo',
-      planCost: curr.billingCycle === 'mo' ? currentPlanOption.monthly : currentPlanOption.yearly
-    }));
-  };
+      billingCycle: curr.billingCycle === 'mo' ? 'yr' : 'mo',
+      planCost:
+        curr.billingCycle === 'mo'
+          ? currentPlanOption.monthly
+          : currentPlanOption.yearly,
+    }))
+  }
 
   const handleSelection = (e: MouseEvent, plan: PlanOption): void => {
-    setFormState( curr => ({
-      ...curr, 
+    setFormState((curr) => ({
+      ...curr,
       billingPlan: plan.name,
-    planCost: formState.billingCycle === 'mo' ? plan.monthly : plan.yearly }));
-  };
+      planCost: formState.billingCycle === 'mo' ? plan.monthly : plan.yearly,
+    }))
+  }
 
   return (
     <>
@@ -58,11 +64,11 @@ export default function SelectPlanStep() {
         <div
           key={plan.name}
           className={`${styles.planOptionWrapper} ${
-            plan.name === formState.billingPlan ? styles.activePlan : ""
+            plan.name === formState.billingPlan ? styles.activePlan : ''
           }`}
           onClick={(e: MouseEvent) => handleSelection(e, plan)}
         >
-          <img src={plan.icon} alt="" style={{ float: "left" }} />
+          <img src={plan.icon} alt="" style={{ float: 'left' }} />
           <h3 className={styles.planNameHeader}>{plan.name}</h3>
           <div className={styles.planOptionPricing}>
             {formState.billingCycle === 'mo' ? (
@@ -73,7 +79,7 @@ export default function SelectPlanStep() {
           </div>
         </div>
       ))}
-      <div style={{ marginTop: "1.25em", textAlign: "center" }}>
+      <div style={{ marginTop: '1.25em', textAlign: 'center' }}>
         Monthly
         <label className="switch" onChange={handleToggle}>
           <input type="checkbox" />
@@ -82,5 +88,5 @@ export default function SelectPlanStep() {
         Yearly
       </div>
     </>
-  );
+  )
 }

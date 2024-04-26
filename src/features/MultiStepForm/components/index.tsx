@@ -1,10 +1,10 @@
-import { FormEvent, useEffect } from "react";
-import PersonalInfoStep from "./PersonalInfoStep";
-import SelectPlanStep from "./SelectPlanStep";
-import AddOnsStep from "./AddOnsStep";
-import FinishingUpStep from "./FinishingUpStep";
-import FormStepWrapper from "./FormStepWrapper";
-import { FormErrors, useFormStateContext } from "../context/FormStateContext";
+import { FormEvent, useEffect } from 'react'
+import PersonalInfoStep from './PersonalInfoStep'
+import SelectPlanStep from './SelectPlanStep'
+import AddOnsStep from './AddOnsStep'
+import FinishingUpStep from './FinishingUpStep'
+import FormStepWrapper from './FormStepWrapper'
+import { FormErrors, useFormStateContext } from '../context/FormStateContext'
 
 export default function MultiStepForm() {
   const {
@@ -15,59 +15,57 @@ export default function MultiStepForm() {
     formState,
     setFormErrors,
     next,
-  } = useFormStateContext();
+  } = useFormStateContext()
 
   useEffect(() => {
     setSteps([
       {
-      component: <PersonalInfoStep />,
-      description: 'Your Info'
+        component: <PersonalInfoStep />,
+        description: 'Your Info',
       },
       {
         component: <SelectPlanStep />,
-        description: 'Your Plan'
+        description: 'Your Plan',
       },
       {
         component: <AddOnsStep />,
-        description: 'Add-Ons'
+        description: 'Add-Ons',
       },
       {
         component: <FinishingUpStep />,
-        description: 'Summary'
-      }
-    ]);
-  }, []);
+        description: 'Summary',
+      },
+    ])
+  }, [])
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    let newFormErrors: FormErrors;
+    e.preventDefault()
+    let newFormErrors: FormErrors
     if (currentStepIndex !== steps.length - 1) {
       newFormErrors = {
-        name: formState.name.trim() === "" ? "Name is required" : "",
+        name: formState.name.trim() === '' ? 'Name is required' : '',
         email:
-          formState.email.trim() === "" ||
+          formState.email.trim() === '' ||
           !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
-            formState.email.trim()
+            formState.email.trim(),
           )
-            ? "Valid email is required"
-            : "",
-        phone: formState.phone.trim() === "" ? "Phone is required" : "",
-        billingPlan: "",
-      };
-      setFormErrors(newFormErrors);
-      if (Object.values(newFormErrors).find((x) => x)) {
-        return;
+            ? 'Valid email is required'
+            : '',
+        phone: formState.phone.trim() === '' ? 'Phone is required' : '',
+        billingPlan: '',
       }
-      return next(); // Proceed to the next step
+      setFormErrors(newFormErrors)
+      if (Object.values(newFormErrors).find((x) => x)) {
+        return
+      }
+      return next() // Proceed to the next step
     }
-    console.log("submitting");
-  };
+    console.log('submitting')
+  }
 
   return (
     <form onSubmit={handleSubmit}>
-      <FormStepWrapper>
-        {step?.component}
-      </FormStepWrapper>
+      <FormStepWrapper>{step?.component}</FormStepWrapper>
     </form>
-  );
+  )
 }
