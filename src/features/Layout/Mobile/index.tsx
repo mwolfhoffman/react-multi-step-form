@@ -17,7 +17,7 @@ function MobileLayout(){
                 </div>
             ))}
         </div>
-        <div className="absolute top-48 left-0 w-full z-10">
+        <div className="absolute top-48 left-0 w-full z-10 bg-white -mt-6">
             <MultiStepForm  />
         </div>
       </div>
