@@ -8,11 +8,11 @@ function App() {
   const screenWidth = useScreenWidth()
 
   return (
-    <>
+    <div className="font-Ubuntu">
     <FormStateContextProvider>
       {screenWidth <768 ? <MobileLayout/> : <DesktopLayout/>}
       </FormStateContextProvider>
-    </>
+    </div>
   );
 }
 
