@@ -5,7 +5,7 @@ function StepTracker(){
     const { steps, currentStepIndex } = useFormStateContext();
 
 return(
-    <div className="flex flex-col space-y-10 text-alabaster bg-hero-desktop bg-center bg-cover h-screen w-96 m-4 rounded-lg">
+    <div className="flex flex-col space-y-10 text-alabaster bg-hero-desktop bg-center bg-cover h-100vh w-96 m-4 rounded-lg">
        <div className="p-10">
             {steps.map((step, idx) => (
                 <div key={idx} className="flex items-baseline">
