@@ -7,9 +7,9 @@
 }
 
 /* Style input fields */
-input[type="text"],
-input[type="email"],
-input[type="tel"] {
+input[type='text'],
+input[type='email'],
+input[type='tel'] {
   display: inline-block;
   width: 100%;
   padding: 10px;

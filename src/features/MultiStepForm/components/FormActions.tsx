@@ -1,15 +1,14 @@
-import styles from "./MultiStepForm.module.css";
-import { useFormStateContext } from "../context/FormStateContext";
+import { useFormStateContext } from '../context/FormStateContext'
 
-export default function FormActions() {
-  const { formErrors, back, steps, currentStepIndex } = useFormStateContext();
+function FormActions() {
+  const { formErrors, back, steps, currentStepIndex } = useFormStateContext()
 
   return (
     <>
       {currentStepIndex !== 0 && (
         <button
           type="button"
-          className={`button ${styles.bottomLeft}`}
+          className={`border border-coolGray rounded-lg bg-lightGray text-marineBlue px-4 py-2 ${currentStepIndex === 0 ? 'hidden' : 'block'}`}
           onClick={back}
         >
           Go Back
@@ -17,11 +16,13 @@ export default function FormActions() {
       )}
       <button
         type="submit"
-        className={`button ${styles.bottomRight}`}
+        className="border border-marineBlue rounded-lg bg-purplishBlue text-alabaster px-4 py-2"
         disabled={!!Object.values(formErrors).find((x) => x)}
       >
-        {currentStepIndex === steps.length - 1 ? "Confirm" : "Next"}
+        {currentStepIndex === steps.length - 1 ? 'Confirm' : 'Next Step'}
       </button>
     </>
-  );
+  )
 }
+
+export default FormActions

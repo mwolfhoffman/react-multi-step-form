@@ -1,7 +1,7 @@
 .headerContainer {
   height: 200px;
   margin: 0;
-  background: url("../assets/images/bg-sidebar-mobile.svg");
+  background: url('../assets/images/bg-sidebar-mobile.svg');
   background-repeat: no-repeat;
   background-size: 100%;
 }

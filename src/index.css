@@ -1,7 +1,26 @@
 @charset "utf-8";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* CSS Document */
 
-body {
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../assets/fonts/Ubuntu-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../assets/fonts/Ubuntu-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../assets/fonts/Ubuntu-Medium.ttf') format('truetype');
+}
+
+/* body {
   margin-top: 0px;
   margin-bottom: 0px;
   margin-left: 0px;
@@ -75,10 +94,10 @@ input:checked + .slider:before {
 }
 
 /* Rounded sliders */
-.slider.round {
+/* .slider.round {
   border-radius: 34px;
 }
 
 .slider.round:before {
   border-radius: 50%;
-}
+} */

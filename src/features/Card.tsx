@@ -1,16 +1,13 @@
-import { ReactNode } from "react";
-import styles from "./Card.module.css";
+import { ReactNode } from 'react'
 
 type CardProps = {
-  children: ReactNode;
-};
+  children: ReactNode
+}
 
 export default function Card({ children }: CardProps) {
-  // const isMobile = useMediaQuery("(max-width: 600px)");
-
   return (
     <>
-      <div className={styles.cardContainer}>{children}</div>
+      <div className="">{children}</div>
     </>
-  );
+  )
 }
