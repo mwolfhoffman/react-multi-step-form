@@ -5,16 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "test": "echo \"no tests yet.\"",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "precommit": "yarn test && yarn format && yarn lint --fix"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo \"pre commit hook running\" && yarn format && yarn lint --fix"
+      "pre-commit": "yarn precommit"
     }
-    },
+  },
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
