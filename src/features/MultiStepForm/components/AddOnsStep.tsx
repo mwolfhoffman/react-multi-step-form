@@ -60,25 +60,44 @@ export default function AddOnsStep() {
 
   return (
     <>
-      <h3>Pick Addons</h3>
-      {addOnOptions.map((option) => (
-        <div
-          key={option.name}
-          className={`${styles.addOnContainer} ${
-            formState.addOns.find((x) => x.name === option.name)
-              ? styles.selectedAddOn
-              : null
-          }`}
-          onClick={() => handleSelection(option)}
-        >
-          <h4>{option.name}</h4>
-          <p>{option.description}</p>
-          <span>
-            {' '}
-            ${option.monthlyCost}/mo or ${option.yearlyCost}/yr
-          </span>
-        </div>
-      ))}
+      <h1 className="text-4xl font-bold text-marineBlue mb-4 sm:mt-8">
+        Pick Add-ons
+      </h1>
+      <p className=" text-coolGray mb-8">
+        Add-ons improve your gaming experience.
+      </p>
+      <div className="mt-8">
+        {addOnOptions.map((option) => (
+          <div
+            key={option.name}
+            className={`flex gap-4 items-baseline justify-start my-4 mx-6 p-4 border border-coolGray rounded-md ${
+              formState.addOns.find((x) => x.name === option.name)
+                ? 'border border-purplishBlue rounded-md bg-pastelBlue bg-opacity-20'
+                : null
+            }`}
+            onClick={() => handleSelection(option)}
+          >
+            <div>
+              <input
+                type="checkbox"
+                checked={!!formState.addOns.find((x) => x.name === option.name)}
+              />
+            </div>
+            <div>
+              <h4 className="text-marineBlue font-extrabold">{option.name}</h4>
+              <p className="text-coolGray">{option.description}</p>
+            </div>
+            <div className="ml-auto">
+              <p className="text-purplishBlue text-right">
+                +$
+                {formState.billingCycle === 'yr'
+                  ? option.yearlyCost + '/yr'
+                  : option.monthlyCost + '/mo'}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </>
   )
 }
