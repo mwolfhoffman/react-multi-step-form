@@ -10,10 +10,16 @@
     "preview": "vite preview",
     "format": "prettier --write ."
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn format && yarn lint --fix"
+    }
+    },
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.12",
+    "husky": "^9.0.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

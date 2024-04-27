@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useFormStateContext } from '../context/FormStateContext'
 
 export default function FinishingUpStep() {
-  const { formState, setFormState } = useFormStateContext()
+  const { formState } = useFormStateContext()
 
   useEffect(() => {
     console.log(formState)

@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import FormActions from './FormActions'
 import Card from '../../Card'
 
 type FormStepWrapperProps = {

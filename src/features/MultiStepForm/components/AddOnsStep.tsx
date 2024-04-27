@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styles from './MultiStepForm.module.css'
 import { useFormStateContext } from '../context/FormStateContext'
 

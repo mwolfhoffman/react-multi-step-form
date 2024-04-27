@@ -1,6 +1,6 @@
 import { useFormStateContext } from '../context/FormStateContext'
 
-export default function FormActions() {
+function FormActions() {
   const { formErrors, back, steps, currentStepIndex } = useFormStateContext()
 
   return (
@@ -24,3 +24,5 @@ export default function FormActions() {
     </>
   )
 }
+
+export default FormActions

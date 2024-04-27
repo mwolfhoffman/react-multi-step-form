@@ -8,7 +8,7 @@ import {
   useState,
 } from 'react'
 
-type FormFields = 'name' | 'email' | 'phone' | 'billingPlan'
+// type FormFields = 'name' | 'email' | 'phone' | 'billingPlan'
 
 type AddOnOption = {
   name: string
