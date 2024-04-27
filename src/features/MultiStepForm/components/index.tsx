@@ -5,6 +5,7 @@ import AddOnsStep from './AddOnsStep'
 import FinishingUpStep from './FinishingUpStep'
 import FormStepWrapper from './FormStepWrapper'
 import { FormErrors, useFormStateContext } from '../context/FormStateContext'
+import FormActions from './FormActions'
 
 export default function MultiStepForm() {
   const {
@@ -65,7 +66,12 @@ export default function MultiStepForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <FormStepWrapper>{step?.component}</FormStepWrapper>
+      <div className="">
+        <FormStepWrapper>{step?.component}</FormStepWrapper>
+        <div className="fixed bottom-0 flex justify-between p-4 w-1/2">
+          <FormActions />
+        </div>
+      </div>
     </form>
   )
 }
