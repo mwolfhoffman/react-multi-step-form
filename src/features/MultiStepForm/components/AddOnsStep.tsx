@@ -1,4 +1,3 @@
-import styles from './MultiStepForm.module.css'
 import { useFormStateContext } from '../context/FormStateContext'
 
 interface AddOnOption {
@@ -60,7 +59,7 @@ export default function AddOnsStep() {
 
   return (
     <>
-      <h1 className="text-4xl font-bold text-marineBlue mb-4 sm:mt-8">
+      <h1 className="text-4xl font-bold text-marineBlue mb-4  mt-8 lg:mt-0">
         Pick Add-ons
       </h1>
       <p className=" text-coolGray mb-8">

@@ -18,7 +18,9 @@ export default function PersonalInfoStep() {
 
   return (
     <>
-      <h1 className="text-4xl font-bold text-marineBlue mb-4">Personal info</h1>
+      <h1 className="text-4xl font-bold text-marineBlue mb-4 mt-8 lg:mt-0">
+        Personal info
+      </h1>
       <p className=" text-coolGray mb-8">
         Please provide your name, email, address, and phone number.
       </p>

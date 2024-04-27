@@ -3,27 +3,27 @@ name: CI
 on:
   push:
     branches:
-      - master  # Change this to your main branch name
+      - master # Change this to your main branch name
   pull_request:
     branches:
-      - master  # Change this to your main branch name
+      - master # Change this to your main branch name
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: yarn install
+      - name: Install dependencies
+        run: yarn install
 
-    - name: Format code
-      run: yarn format
+      - name: Format code
+        run: yarn format
 
-    - name: Lint code
-      run: yarn lint
+      - name: Lint code
+        run: yarn lint
 
-    - name: Run tests
-      run: yarn test
+      - name: Run tests
+        run: yarn test
