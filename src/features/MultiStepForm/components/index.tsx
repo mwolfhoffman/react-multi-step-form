@@ -3,10 +3,11 @@ import PersonalInfoStep from './PersonalInfoStep'
 import SelectPlanStep from './SelectPlanStep'
 import AddOnsStep from './AddOnsStep'
 import FinishingUpStep from './FinishingUpStep'
-import FormStepWrapper from './FormStepWrapper'
 import { FormErrors, useFormStateContext } from '../context/FormStateContext'
 import FormActions from './FormActions'
-
+import Card from '../../Card'
+import personalInfoSchema from '../validations/personalInfo'
+import { ValidationError } from 'yup'
 export default function MultiStepForm() {
   const {
     setSteps,
@@ -39,35 +40,40 @@ export default function MultiStepForm() {
     ])
   }, [])
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    let newFormErrors: FormErrors
-    if (currentStepIndex !== steps.length - 1) {
-      newFormErrors = {
-        name: formState.name.trim() === '' ? 'Name is required' : '',
-        email:
-          formState.email.trim() === '' ||
-          !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(
-            formState.email.trim(),
-          )
-            ? 'Valid email is required'
-            : '',
-        phone: formState.phone.trim() === '' ? 'Phone is required' : '',
-        billingPlan: '',
+    if (currentStepIndex === 0) {
+      console.log('here')
+      const formData = {
+        name: e.target.name.value,
+        email: e.target.email.value,
+        phone: e.target.phone.value,
       }
-      setFormErrors(newFormErrors)
-      if (Object.values(newFormErrors).find((x) => x)) {
-        return
-      }
-      return next() // Proceed to the next step
+      console.log(formData)
+      personalInfoSchema
+        .validate(formData, { abortEarly: false })
+        .then(() => next()) // Proceed to the next step
+        .catch((err: ValidationError) => {
+          console.error(err)
+          console.log(err?.inner)
+          const newErrors = {}
+          err?.inner?.forEach((e: ValidationError) => {
+            newErrors[e.path] = e.message
+          })
+          return setFormErrors((curr) => ({ ...curr, ...newErrors }))
+        })
+    } else if (currentStepIndex !== steps.length - 1) {
+      return next()
+    } else {
+      //  TODO
+      console.log('submitting')
     }
-    console.log('submitting')
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="">
-        <FormStepWrapper>{step?.component}</FormStepWrapper>
+        <Card>{step?.component}</Card>
         <div className="fixed bottom-0 flex justify-between p-4 w-1/2">
           <FormActions />
         </div>
