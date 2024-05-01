@@ -3,7 +3,7 @@ import PersonalInfoStep from './PersonalInfoStep'
 import SelectPlanStep from './SelectPlanStep'
 import AddOnsStep from './AddOnsStep'
 import FinishingUpStep from './FinishingUpStep'
-import { FormErrors, useFormStateContext } from '../context/FormStateContext'
+import { useFormStateContext } from '../context/FormStateContext'
 import FormActions from './FormActions'
 import Card from '../../Card'
 import personalInfoSchema from '../validations/personalInfo'
@@ -14,7 +14,6 @@ export default function MultiStepForm() {
     steps,
     currentStepIndex,
     step,
-    formState,
     setFormErrors,
     next,
   } = useFormStateContext()
