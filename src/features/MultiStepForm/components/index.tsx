@@ -73,7 +73,7 @@ export default function MultiStepForm() {
     <form onSubmit={handleSubmit}>
       <div className="">
         <Card>{step?.component}</Card>
-        <div className="fixed bottom-0 flex justify-between p-4 w-1/2">
+        <div className={`flex p-4 m-4 ${currentStepIndex === 0 ? 'justify-end':'justify-between'}`}>
           <FormActions />
         </div>
       </div>
